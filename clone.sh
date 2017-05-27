@@ -19,6 +19,7 @@ repos=(
     "https://github.com/edx/credentials.git"
     "https://github.com/edx/ecommerce.git"
     "https://github.com/edx/edx-platform.git"
+    "https://github.com/edx/cs_comments_service"
 )
 
 name_pattern=".*edx/(.*).git"

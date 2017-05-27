@@ -25,7 +25,7 @@ services:
 
   memcached:
     container_name: edx.devstack.memcached
-    image: memcached:1.4.24
+    image: memcached:latest
     # ports:
     #   - "11211:11211"
 
@@ -35,7 +35,7 @@ services:
     # See https://docs.mongodb.com/v3.0/reference/program/mongod/#options for complete details.
     command: mongod --smallfiles --nojournal --storageEngine wiredTiger
     container_name: edx.devstack.mongo
-    image: mongo:3.0.14
+    image: mongo:latest
     # ports:
     #  - "27017:27017"
     volumes:
@@ -47,7 +47,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ""
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    image: mysql:5.6
+    image: mysql:latest
     # ports:
     #   - "3306:3306"
     volumes:
@@ -120,6 +120,19 @@ services:
     image: edxops/edxapp:latest
     ports:
       - "18010:18010"
+
+  forums:
+    container_name: edx.devstack.forums
+    links:
+      - db:db
+      #   - xqueue:xqueue
+      - memcache:memcache
+      - mongo:mongo
+      - es:es
+      - rabbitmq:rabbitmq
+    image: edxops/forums:opencraft-v2
+    ports:
+      - 4567:4567
 
 volumes:
   elasticsearch_data:
