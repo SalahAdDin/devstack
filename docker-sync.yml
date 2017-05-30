@@ -20,3 +20,6 @@ syncs:
   edxapp-sync:
     src: '../edx-platform/'
     sync_excludes: [ '.git', '.idea' ]
+  forums-sync:
+    src: '../cs_comments_service/'
+    sync_excludes: [ '.git', '.idea' ]

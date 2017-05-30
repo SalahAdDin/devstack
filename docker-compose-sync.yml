@@ -16,6 +16,9 @@ services:
   studio:
     volumes:
       - edxapp-sync:/edx/app/edxapp/edx-platform:nocopy
+  forums:
+    volumes:
+      - edxapp-sync:/edx/app/forum/cs_comments_service:nocopy
 
 volumes:
   credentials-sync:
