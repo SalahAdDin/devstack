@@ -122,15 +122,20 @@ services:
       - "18010:18010"
 
   forums:
+    command: bash -c 'source /edx/app/forum/cs_comments_service_env && ruby app.rb -p 18080'
     container_name: edx.devstack.forums
-    links:
-      - db:db
+    depends_on:
       #   - xqueue:xqueue
-      - memcache:memcache
-      - mongo:mongo
-      - es:es
-      - rabbitmq:rabbitmq
-    image: edxops/forums:opencraft-v2
+      - mongo
+      - elasticsearch
+      # - rabbitmq:rabbitmq
+      - mysql
+      - memcached
+    environment:
+      CACHE_LOCATION: edx.devstack.memcached:12211
+      DB_HOST: edx.devstack.mysql
+      TEST_ELASTICSEARCH_URL: "http://edx.devstack.elasticsearch:9200"
+    image: edxops/forums:latest
     ports:
       - 4567:4567
 
