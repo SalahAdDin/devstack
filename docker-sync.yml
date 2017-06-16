@@ -25,5 +25,6 @@ syncs:
     src: '../edx-platform/'
     sync_excludes: [ '.git', '.idea' ]
   forums-sync:
+    host_disk_mount_mode: 'cached'
     src: '../cs_comments_service/'
     sync_excludes: [ '.git', '.idea' ]
