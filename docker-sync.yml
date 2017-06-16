@@ -6,18 +6,22 @@ options:
 
 syncs:
   credentials-sync:
+    host_disk_mount_mode: 'cached'
     src: '../credentials/'
     sync_excludes: [ '.git', '.idea' ]
 
   discovery-sync:
+    host_disk_mount_mode: 'cached'
     src: '../course-discovery/'
     sync_excludes: [ '.git', '.idea' ]
 
   ecommerce-sync:
+    host_disk_mount_mode: 'cached'
     src: '../ecommerce/'
     sync_excludes: [ '.git', '.idea' ]
 
   edxapp-sync:
+    host_disk_mount_mode: 'cached'
     src: '../edx-platform/'
     sync_excludes: [ '.git', '.idea' ]
   forums-sync:
